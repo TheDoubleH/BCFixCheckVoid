@@ -1,9 +1,9 @@
 {
     "id":  "60fd0b54-3519-43bc-95b3-2a16265ac2f2",
-    "name":  "Void Check Bug Fix - Resolve Void Check Document Type",
+    "name":  "Void Payment",
     "publisher":  "Helgesen Consulting, Inc.",
-    "brief":  "Set the Document Type to Payment on Financially Void Payment Transactions",
-    "description":  "Stop-gap for bug in Business Central. This App, sets the Entry Type to 'Payment' for the Payment reversal. This will correct the 'Payments (LCY) field on the Vendor.",
+    "brief":  "Set the correct Entry Type on Financially Void Payment Transactions",
+    "description":  "Stop-gap for bug in Business Central. This App, sets the Entry Type to 'Payment' for the Payment reversal and 'Refund' for Refund Reversal. This will correct the 'Payments (LCY) field on the Vendor.",
     "version":  "0.1.210322.0",
     "privacyStatement":  "",
     "EULA":  "",
