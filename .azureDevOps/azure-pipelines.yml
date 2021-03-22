@@ -16,7 +16,7 @@ variables:
 trigger:
  branches:
    include:
-     - master
+     - main
      
 jobs:
 - job: Build
