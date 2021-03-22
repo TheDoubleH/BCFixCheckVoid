@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "app"
+		},
+		{
+			"path": "test"
+		},
+		{
+			"path": ".azureDevOps"
+		},
+		{
+			"path": ".vscode"
+		}
+	],
+	"settings": {
+		"CRS.ObjectNameSuffix": "BFPTE",
+		"CRS.OnSaveAlFileAction": "Rename",
+		"al.compilationOptions": {
+		"parallel": true
+		},
+		"al.enableCodeAnalysis": true,
+		"al.backgroundCodeAnalysis": true,
+		"al.codeAnalyzers": [
+		"${CodeCop}", "${UICop}", "${PerTenantExtensionCop}"
+		],
+	}
+}
