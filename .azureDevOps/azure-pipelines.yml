@@ -7,8 +7,16 @@ trigger:
 
 strategy:
   matrix:
-    'W1':
+    'W1 - Current':
       artifactCountry: 'w1'
+      artifactVersion: 'Current'
+    'W1 - Next Minor':
+      artifactCountry: 'w1'
+      artifactVersion: 'NextMinor'
+    'W1 - Next Major':
+      artifactCountry: 'w1'
+      artifactVersion: 'NextMajor'
+
     'US':
       artifactCountry: 'us'
 
@@ -32,33 +40,33 @@ steps:
 # This compiler (v2) is not going to use a docker container, but it's going to use the artifacts that you specify in the parameters
 # The compiler will "Batch Compile", meaning: it will compile everything in the workingfolder
 
-- task: ALOpsAppCompiler@2
-  displayName: 'Current'
-  inputs:  
-    artifacttype: 'Sandbox'
-    artifactcountry: '$(artifactCountry)'
-    appversiontemplate: '?.?.*.0'
-    alcodeanalyzer: UICop,CodeCop,PerTenantExtensionCop
-    ruleset: 'https://navmgtstorage00000000.blob.core.windows.net/backup/app.ruleset.json?sp=r&st=2021-01-17T11:45:50Z&se=2022-02-01T19:45:50Z&spr=https&sv=2019-12-12&sr=b&sig=Y%2BibBuN2cTg3%2FIasH9rigqGBoUCCb9rsSXsrwaW8f%2Fc%3D'
+#- task: ALOpsAppCompiler@2
+#  displayName: 'Current'
+#  inputs:  
+#    artifacttype: 'Sandbox'
+#    artifactcountry: '$(artifactCountry)'
+#    appversiontemplate: '?.?.*.0'
+#    alcodeanalyzer: UICop,CodeCop,PerTenantExtensionCop
+#    ruleset: 'https://navmgtstorage00000000.blob.core.windows.net/backup/app.ruleset.json?sp=r&st=2021-01-17T11:45:50Z&se=2022-02-01T19:45:50Z&spr=https&sv=2019-12-12&sr=b&sig=Y%2BibBuN2cTg3%2FIasH9rigqGBoUCCb9rsSXsrwaW8f%2Fc%3D'
     
 - task: ALOpsAppCompiler@2
   displayName: 'Next Minor'
   inputs:  
     artifacttype: 'Sandbox'
     artifactcountry: '$(artifactCountry)'
-    versionselect: NextMinor
+    versionselect: '$(artifactVersion)'
     appversiontemplate: '?.?.*.0'
     alcodeanalyzer: UICop,CodeCop,PerTenantExtensionCop
     ruleset: 'https://navmgtstorage00000000.blob.core.windows.net/backup/app.ruleset.json?sp=r&st=2021-01-17T11:45:50Z&se=2022-02-01T19:45:50Z&spr=https&sv=2019-12-12&sr=b&sig=Y%2BibBuN2cTg3%2FIasH9rigqGBoUCCb9rsSXsrwaW8f%2Fc%3D'
     sastoken: $(bc.sastoken)
 
-- task: ALOpsAppCompiler@2
-  displayName: 'Next Major'
-  inputs:
-    artifacttype: 'Sandbox'
-    artifactcountry: '$(artifactCountry)'
-    versionselect: NextMajor
-    appversiontemplate: '?.?.*.0'
-    alcodeanalyzer: UICop,CodeCop,PerTenantExtensionCop
-    ruleset: 'https://navmgtstorage00000000.blob.core.windows.net/backup/app.ruleset.json?sp=r&st=2021-01-17T11:45:50Z&se=2022-02-01T19:45:50Z&spr=https&sv=2019-12-12&sr=b&sig=Y%2BibBuN2cTg3%2FIasH9rigqGBoUCCb9rsSXsrwaW8f%2Fc%3D'
-    sastoken: $(bc.sastoken)
+#- task: ALOpsAppCompiler@2
+#  displayName: 'Next Major'
+#  inputs:
+#    artifacttype: 'Sandbox'
+#    artifactcountry: '$(artifactCountry)'
+#    versionselect: NextMajor
+#    appversiontemplate: '?.?.*.0'
+#    alcodeanalyzer: UICop,CodeCop,PerTenantExtensionCop
+#    ruleset: 'https://navmgtstorage00000000.blob.core.windows.net/backup/app.ruleset.json?sp=r&st=2021-01-17T11:45:50Z&se=2022-02-01T19:45:50Z&spr=https&sv=2019-12-12&sr=b&sig=Y%2BibBuN2cTg3%2FIasH9rigqGBoUCCb9rsSXsrwaW8f%2Fc%3D'
+#    sastoken: $(bc.sastoken)
