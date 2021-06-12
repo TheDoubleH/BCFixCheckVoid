@@ -36,7 +36,7 @@ steps:
   displayName: 'Current'
   inputs:  
     artifacttype: 'Sandbox'
-    artifactcountry: $artifactCountry
+    artifactcountry: '$(artifactCountry)'
     appversiontemplate: '?.?.*.0'
     alcodeanalyzer: UICop,CodeCop,PerTenantExtensionCop
     ruleset: 'https://navmgtstorage00000000.blob.core.windows.net/backup/app.ruleset.json?sp=r&st=2021-01-17T11:45:50Z&se=2022-02-01T19:45:50Z&spr=https&sv=2019-12-12&sr=b&sig=Y%2BibBuN2cTg3%2FIasH9rigqGBoUCCb9rsSXsrwaW8f%2Fc%3D'
@@ -45,7 +45,7 @@ steps:
   displayName: 'Next Minor'
   inputs:  
     artifacttype: 'Sandbox'
-    artifactcountry: $artifactCountry
+    artifactcountry: '$(artifactCountry)'
     versionselect: NextMinor
     appversiontemplate: '?.?.*.0'
     alcodeanalyzer: UICop,CodeCop,PerTenantExtensionCop
@@ -56,7 +56,7 @@ steps:
   displayName: 'Next Major'
   inputs:
     artifacttype: 'Sandbox'
-    artifactcountry: $artifactCountry
+    artifactcountry: '$(artifactCountry)'
     versionselect: NextMajor
     appversiontemplate: '?.?.*.0'
     alcodeanalyzer: UICop,CodeCop,PerTenantExtensionCop
