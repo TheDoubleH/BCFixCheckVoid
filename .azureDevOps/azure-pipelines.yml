@@ -1,4 +1,4 @@
-name: $(Build.BuildId)
+name: $(Date:yyyyMMdd)$(Rev:.r)
 
 trigger:
  branches:
@@ -7,24 +7,33 @@ trigger:
 
 strategy:
   matrix:
-    'Current Version - W1':
+    'Compile Against W1 - Current Version':
       artifactCountry: 'w1'
       artifactVersion: 'Current'
-    'Current Version - US':
+    'Compile Against W1 - Next Minor':
+      artifactCountry: 'w1'
+      artifactVersion: 'NextMinor'
+    'Compile Against W1 - Next Major':
+      artifactCountry: 'w1'
+      artifactVersion: 'NextMajor'
+    'Compile Against United States - Current Version':
       artifactCountry: 'us'
       artifactVersion: 'Current'
-    'Next Minor Version - W1':
-      artifactCountry: 'w1'
-      artifactVersion: 'NextMinor'
-    'Next Minor Version - US':
+    'Compile Against United States - Next Minor':
       artifactCountry: 'us'
       artifactVersion: 'NextMinor'
-    'Next Major Version - W1':
-      artifactCountry: 'w1'
-      artifactVersion: 'NextMajor'
-    'Next Major Version - US':
+    'Compile Against United States - Next Major':
       artifactCountry: 'us'
       artifactVersion: 'NextMajor'
+    'Compile Against Canada - Current Version':
+      artifactCountry: 'ca'
+      artifactVersion: 'Current'
+    'Compile Against Canada - Next Minor':
+      artifactCountry: 'ca'
+      artifactVersion: 'NextMinor'
+    'Compile Against Canada - Next Major':
+      artifactCountry: 'ca'
+      artifactVersion: 'NextMajor'      
 
 pool: Helgesen Build
 
@@ -32,8 +41,8 @@ variables:
 - group: Secrets
 
 schedules:
-- cron: '5 0 * * *'
-  displayName: Daily Current Next Minor and Major build
+- cron: '0 0 * * *'
+  displayName: Daily Midnight ALOps Compile against Current, Next Minor, and Next Major
   branches:
     include:
     - main
